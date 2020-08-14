@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "340942503899",
+    "firebase_url": "https://joire-id-production.firebaseio.com",
+    "project_id": "joire-id-production",
+    "storage_bucket": "joire-id-production.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340942503899:android:bb71aff133e59c786e71fe",
+        "android_client_info": {
+          "package_name": "tech.wwology.joire_id"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340942503899-s9sibj9b78c403v30bt678pf5dsdbovr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tech.wwology.joire_id",
+            "certificate_hash": "7c6453d5b7d3eb85c8ba4578cfce84b245d7c2f3"
+          }
+        },
+        {
+          "client_id": "340942503899-t5u69ajctplf7lbvi1jnqb2dos5l9dkf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6VZb96fe4mHEsQJmAjSaresNNLYPU0Hg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340942503899-t5u69ajctplf7lbvi1jnqb2dos5l9dkf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
