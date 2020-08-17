@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+
+import 'constants.dart';
+
+FirebaseAnalytics analytics;
+
 void main() {
+  analytics = FirebaseAnalytics();
+
+  Crashlytics.instance.enableInDevMode = true;
+  FlutterError.onError = Crashlytics.instance.recordFlutterError;
   runApp(MyApp());
 }
 
@@ -9,12 +20,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Joire',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: kMainThemeColour,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Joire Application'),
     );
   }
 }
