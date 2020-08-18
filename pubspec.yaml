@@ -19,6 +19,7 @@ dependencies:
   firebase_analytics: ^5.0.16
   material_design_icons_flutter: ^4.0.5345
   firebase_crashlytics: ^0.1.4+1
+  vertical_tabs: ^0.2.0
 
 dev_dependencies:
   flutter_test:
@@ -47,3 +48,4 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+
