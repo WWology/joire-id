@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        // splashColor: Colors.transparent,
+        // highlightColor: Colors.transparent,
         primaryColor: kMainThemeColour,
         scaffoldBackgroundColor: kWhiteColour,
         textTheme: TextTheme(
