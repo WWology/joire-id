@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
-import 'package:joire_id/CategoryItem.dart';
+import 'package:joire_id/category_item.dart';
 import 'package:joire_id/constants.dart';
+import 'package:joire_id/screens/brownies_page.dart';
+import 'package:joire_id/screens/cheesecake_page.dart';
+import 'package:joire_id/screens/jars_page.dart';
+import 'package:joire_id/screens/others_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  PageController pageController = PageController(viewportFraction: .7);
+  PageController pageController = PageController();
 
   List _isSelected = [true, false, false, false];
 
@@ -57,72 +59,70 @@ class _HomeScreenState extends State<HomeScreen> {
         height: screenHeight,
         child: Stack(
           children: [
-            buildSidemenu(screenHeight, screenWidth, categories),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      _openEndDrawer();
-                    },
-                    child: Container(
-                        decoration: BoxDecoration(
-                          color: kBlackColour,
-                        ),
-                        height: screenHeight / 7,
-                        width: screenWidth - 60,
-                        alignment: Alignment.centerRight,
-                        child: Image.asset(
-                          'assets/JoireLogo.png',
-                          scale: 2,
-                        )),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: SizedBox(
-                    height: screenHeight / 1.18,
-                    width: screenWidth - 60,
-                    child: PageView.builder(
-                      onPageChanged: (index) {
-                        setState(() {
-                          var previousIndex = _isSelected.indexOf(true);
-                          _isSelected[index] = true;
-
-                          if (index != previousIndex) {
-                            _isSelected[previousIndex] = false;
-                          }
-                        });
-                      },
-                      controller: pageController,
-                      scrollDirection: Axis.vertical,
-                      physics: BouncingScrollPhysics(),
-                      itemCount: categories.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: kBlackColour,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          height: 10,
-                          width: 10,
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ],
-            )
+            _buildSidemenu(screenHeight, screenWidth, categories),
+            _buildRightMenu(screenHeight, screenWidth, categories),
           ],
         ),
       ),
     );
   }
 
-  Container buildSidemenu(
+  Widget _buildRightMenu(
+      double screenHeight, double screenWidth, List categories) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        GestureDetector(
+          onTap: () {
+            _openEndDrawer();
+          },
+          child: Align(
+            alignment: Alignment.topRight,
+            child: Container(
+              height: screenHeight / 7,
+              width: screenWidth - 60,
+              alignment: Alignment.topRight,
+              child: Image.asset(
+                'assets/JoireLogo.png',
+                scale: 2,
+              ),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.topRight,
+          child: Container(
+            height: screenHeight / 1.18,
+            width: screenWidth - 60,
+            child: PageView(
+              onPageChanged: (index) {
+                setState(() {
+                  var previousIndex = _isSelected.indexOf(true);
+                  _isSelected[index] = true;
+
+                  if (index != previousIndex) {
+                    _isSelected[previousIndex] = false;
+                  }
+                });
+              },
+              controller: pageController,
+              scrollDirection: Axis.vertical,
+              physics: BouncingScrollPhysics(),
+              children: [
+                CheeseCakePage(),
+                JarsPage(),
+                BrowniesPage(),
+                OthersPage(),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSidemenu(
       double screenHeight, double screenWidth, List categories) {
     return Container(
       height: screenHeight,
@@ -161,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         }
                         pageController.animateToPage(
                           index,
-                          duration: Duration(seconds: 1),
+                          duration: Duration(seconds: 2),
                           curve: Curves.fastLinearToSlowEaseIn,
                         );
                       });
