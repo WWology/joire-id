@@ -1,3 +1,3 @@
 # joire-id
 
-Joire Pos System
+Joire App by Flutter
